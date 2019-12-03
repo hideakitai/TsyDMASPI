@@ -56,7 +56,7 @@ void setup()
     setSrc();
     clrDest((uint8_t *)dest);
 
-    TsyDMASPI0.begin(SPISettings(4000000, MSBFIRST, SPI_MODE3));
+    TsyDMASPI0.begin(PIN_CS, SPISettings(4000000, MSBFIRST, SPI_MODE3));
 
     Serial.println("Testing src -> dest, single transfer");
     Serial.println("--------------------------------------------------");
