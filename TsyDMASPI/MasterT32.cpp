@@ -12,9 +12,14 @@ Master0::~Master0()
     destroy();
 }
 
-bool Master0::begin(const SPISettings& setting)
+bool Master0::begin(uint8_t cs, bool active_low)
 {
-    return this->MasterBase::begin(SPI, setting);
+    return this->MasterBase::begin(SPI, cs, SPISettings(), active_low);
+}
+
+bool Master0::begin(uint8_t cs, const SPISettings& setting, bool active_low)
+{
+    return this->MasterBase::begin(SPI, cs, setting, active_low);
 }
 
 DMAChannel* Master0::dmarx()

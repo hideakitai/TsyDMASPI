@@ -13,10 +13,13 @@ ARDUINO_TEENSY_DMA_SPI_NAMESPACE_BEGIN
 
 volatile uint8_t MasterBase::dummy = 0;
 
-bool MasterBase::begin(SPIClass& spic, const SPISettings& setting)
+bool MasterBase::begin(SPIClass& spic, uint8_t cs, const SPISettings& setting, bool active_low)
 {
     spi = &spic;
+    pin_cs = cs;
+    b_active_low = active_low;
     spi_setting = setting;
+    pinMode(pin_cs, OUTPUT);
     spi->begin();
     if (!initDmaTx()) return false;
     if (!initDmaRx()) return false;
@@ -131,6 +134,7 @@ void MasterBase::beginTransaction()
 
     initTransaction();
 
+    digitalWriteFast(pin_cs, !b_active_low);
     spi->beginTransaction(SPISettings());
 
     dmarx()->enable();
@@ -140,6 +144,7 @@ void MasterBase::beginTransaction()
 void MasterBase::endTransaction()
 {
     spi->endTransaction();
+    digitalWriteFast(pin_cs, b_active_low);
     transactions.pop_front();
     b_in_transaction = false;
     clearTransaction();

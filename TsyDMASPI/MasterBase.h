@@ -24,6 +24,8 @@ protected:
 
     SPIClass* spi;
     SPISettings spi_setting;
+    uint8_t pin_cs {10};
+    bool b_active_low {true};
 
     std::deque<spi_transaction_t> transactions;
     bool b_in_transaction {false};
@@ -33,7 +35,7 @@ public:
 
     virtual ~MasterBase() {}
 
-    bool begin(SPIClass& spic, const SPISettings& setting);
+    bool begin(SPIClass& spic, uint8_t cs, const SPISettings& setting, bool active_low);
     void end();
 
     // each derived class should have its own dma buffer

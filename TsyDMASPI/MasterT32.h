@@ -13,7 +13,8 @@ struct Master0 : public MasterBase
 
     virtual ~Master0();
 
-    bool begin(const SPISettings& setting);
+    bool begin(uint8_t cs, bool active_low = true);
+    bool begin(uint8_t cs, const SPISettings& setting, bool active_low = true);
 
     virtual DMAChannel* dmarx() final;
     virtual DMAChannel* dmatx() final;
