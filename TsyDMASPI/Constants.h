@@ -1,0 +1,12 @@
+#pragma once
+#ifndef ARDUINO_TEENSY_DMA_SPI_CONSTANTS_H
+#define ARDUINO_TEENSY_DMA_SPI_CONSTANTS_H
+
+#ifndef ARDUINO_TEENSY_DMA_SPI_NAMESPACE_BEGIN
+#define ARDUINO_TEENSY_DMA_SPI_NAMESPACE_BEGIN namespace arduino { namespace teensy { namespace spi { namespace dma {
+#endif
+#ifndef ARDUINO_TEENSY_DMA_SPI_NAMESPACE_END
+#define ARDUINO_TEENSY_DMA_SPI_NAMESPACE_END }}}}
+#endif
+
+#endif // ARDUINO_TEENSY_DMA_SPI_CONSTANTS_H
