@@ -3,6 +3,7 @@
 // reference
 // https://github.com/KurtE/DmaSpi/tree/T4
 
+#define PIN_CS
 #define DMASIZE 8192
 uint8_t src[DMASIZE];
 volatile uint8_t dest[DMASIZE];
