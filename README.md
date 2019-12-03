@@ -15,18 +15,21 @@ This library currently supports only Teensy 4.0.
 
 ## Usage
 
+Please see examples for details.
+
 ### One by One transfer
 
 ``` C++
 // SPI with DMA on SPI0
-TsyDMASPI0.begin(SPISettings(4000000, MSBFIRST, SPI_MODE3));
+TsyDMASPI0.begin(PIN_CS, SPISettings(4000000, MSBFIRST, SPI_MODE3));
 TsyDMASPI0.transfer(tx_buf, rx_buf, DMASIZE);
 ```
 
 ### Multiple queued transfer
 
 ``` C++
-TsyDMASPI0.begin(SPISettings(4000000, MSBFIRST, SPI_MODE3));
+// SPI with DMA on SPI0
+TsyDMASPI0.begin(PIN_CS, SPISettings(4000000, MSBFIRST, SPI_MODE3));
 TsyDMASPI0.queue(tx_buf0, rx_buf0, DMASIZE);
 TsyDMASPI0.queue(tx_buf1, rx_buf1, DMASIZE);
 TsyDMASPI0.yield(); // wait until all transactions will be done
