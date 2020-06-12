@@ -1,9 +1,8 @@
 #include <TsyDMASPI.h>
 
-// reference
-// https://github.com/KurtE/DmaSpi/tree/T4
+// connect MOSI and MISO on Teensy (loop back)
 
-#define PIN_CS
+#define PIN_CS 10
 #define DMASIZE 8192
 uint8_t src[DMASIZE];
 volatile uint8_t dest[DMASIZE];
