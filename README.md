@@ -40,3 +40,12 @@ TsyDMASPI0.yield(); // wait until all transactions will be done
 - Teensy LC, 3.2, 3.5, 3.6 implementation
 - Slave mode with DMA for example like [this thread](https://forum.pjrc.com/threads/58023-Teensy-4-as-SPI-Slave)
 
+
+## Embedded Libraries
+
+- [TeensyDirtySTLErrorSolution v0.1.0](https://github.com/hideakitai/TeensyDirtySTLErrorSolution)
+
+
+## License
+
+MIT
