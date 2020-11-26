@@ -15,7 +15,28 @@ This library currently supports only Teensy 4.0.
 
 ## Usage
 
-Please see examples for details.
+```C++
+#include <TsyDMASPI.h>
+
+#define PIN_CS 10
+#define DMASIZE 8192
+uint8_t src[DMASIZE];
+volatile uint8_t dest[DMASIZE];
+volatile uint8_t dest1[DMASIZE];
+
+void setup() {
+    TsyDMASPI0.begin(PIN_CS, SPISettings(4000000, MSBFIRST, SPI_MODE3));
+
+    // one by one transaction
+    TsyDMASPI0.transfer(src, dest, DMASIZE);
+    
+    // multiple transaction at once
+    TsyDMASPI0.queue(src, dest, DMASIZE);
+    TsyDMASPI0.queue(src, dest1, DMASIZE);
+    TsyDMASPI0.yield();
+}
+```
+
 
 ### One by One transfer
 
