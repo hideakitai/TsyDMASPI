@@ -164,7 +164,7 @@ protected:
         initTransaction();
 
         digitalWriteFast(pin_cs, !b_active_low);
-        spi->beginTransaction(SPISettings());
+        spi->beginTransaction(spi_setting);
 
         dmarx()->enable();
         dmatx()->enable();
