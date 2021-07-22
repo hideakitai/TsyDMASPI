@@ -163,8 +163,8 @@ protected:
 
         initTransaction();
 
-        digitalWriteFast(pin_cs, !b_active_low);
         spi->beginTransaction(spi_setting);
+        digitalWriteFast(pin_cs, !b_active_low);
 
         dmarx()->enable();
         dmatx()->enable();
@@ -172,8 +172,8 @@ protected:
 
     void endTransaction()
     {
-        spi->endTransaction();
         digitalWriteFast(pin_cs, b_active_low);
+        spi->endTransaction();
         transactions.pop_front();
         b_in_transaction = false;
         clearTransaction();
